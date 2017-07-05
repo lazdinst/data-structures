@@ -12,9 +12,10 @@ var Stack = function() {
 
   someInstance.pop = function() {
     //removes the top element of the stack (storage)
-    var poppedValue = storage[Object.keys(storage).length - 1];
-    delete storage[Object.keys(storage).length - 1];
-    return poppedValue;
+    var keys = Object.keys(storage);
+    var popped = storage[keys.length - 1];
+    delete storage[keys.length - 1];
+    return popped;
   };
 
   someInstance.size = function() {
