@@ -7,7 +7,7 @@ var Stack = function() {
   // Implement the methods below
   someInstance.push = function(value) {
   // add an element to the top of the stack (storage)
-     storage[Object.keys(storage).length] = value;
+    storage[Object.keys(storage).length] = value;
   };
 
   someInstance.pop = function() {
