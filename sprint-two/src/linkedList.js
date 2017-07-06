@@ -18,7 +18,6 @@ var LinkedList = function() {
       // list.tail = node;
       //Do Something
     }
-    
 
     // node.next = null;
   };
