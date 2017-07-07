@@ -1,8 +1,4 @@
 
-// Usage:
-//   limitedArray.set(3, 'hi');
-//   limitedArray.get(3); // returns 'hi'
-
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -39,8 +35,7 @@ HashTable.prototype.insert = function(k, v) {
   }
   
 };
-//Right now we are handling our if conditionlsa correctly
-//Retrivew is 
+
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
@@ -49,10 +44,6 @@ HashTable.prototype.retrieve = function(k) {
       return tuple[0] === k;
     });
     return tuple ? tuple[1] : undefined;
-  } else if (bucket.length === 0) {
-    return undefined;
-  } else {
-    return false;
   }
 };
 
@@ -62,22 +53,8 @@ HashTable.prototype.remove = function(k) {
   
   var filteredBucket = bucket.filter(function(tuple) {
     return tuple[0] !== k;
-  });
-  
-  
+  }); 
   this._storage.set(index, filteredBucket); 
-  debugger;
-  
-  // // If it has the tuple
-  // // debugger;
-  // //We have found the tuple
-  // if (1) { //HashTable.prototype.retrieve.call(this, k)
-  //   //filter the bucket for all tuples without key of k
-    
-  //   //push the filtered bucket back into the bucket at index.
-  // } else {
-  //   //Do Nothing, nothing to remove if it doesnt exist.
-  // }
 };
 
 
