@@ -3,9 +3,18 @@ var BinarySearchTree = function(value) {
   
   tree.root = value;
   tree.left = null;
-  tree.right = null; 
-  tree.insert = function(value) {
-  //If val < root
+  tree.right = null;
+   
+  tree.insert = function(value) {debugger;
+    var traverseTree = function(node, value) {
+      if (value < node.root) { 
+        node.left = BinarySearchTree(value);
+      } else if (value > node.root) { 
+        node.right = BinarySearchTree(value);
+      }
+      return;
+    };
+    
     if (this.root > value) {
       // if this.left !== null/
       if (this.left === null) {
@@ -13,27 +22,24 @@ var BinarySearchTree = function(value) {
         this.left = BinarySearchTree(value);
       } else {
         //enter recursion
-        traverseTree(this.left);
+        traverseTree(this.left, value);
       }
     } else if (this.root < value) {
         // if this.right !== Null
-        if (this.right === null) {
-          //add node to this.right
-          this.right = BinarySearchTree(value);
-        } else {
-          //enter recursion
-          traverseTree(this.right);
-        }
+      if (this.right === null) {
+        this.right = BinarySearchTree(value);
+      } else {
+        traverseTree(this.right, value);
+      }
+        // if (this.right === null) {
+        //   //add node to this.right
+        //   this.right = BinarySearchTree(value);
+        // } else {
+        //   //enter recursion
+        //   traverseTree(this.right);
+        // }
     }
   
-    var traverseTree = function(value) {
-      if (value < this.root) { 
-        this.left = BinarySearchTree(value);
-      } else if (value > this.root) { 
-        this.right = BinarySearchTree(value);
-      }
-      return;
-    };
   };
     
   tree.contains = function(value) {
