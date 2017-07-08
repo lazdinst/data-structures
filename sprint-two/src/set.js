@@ -1,8 +1,9 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = []; // fix me
+  set._storage = []; // fix me ==== Need to change this to an object with values as the ids
   return set;
 };
+//Take the value and use it as an id in an object so that it is constant time
 
 var setPrototype = {};
 
