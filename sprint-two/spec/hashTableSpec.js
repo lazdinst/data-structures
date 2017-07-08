@@ -23,6 +23,11 @@ describe('hashTable', function() {
     expect(hashTable.retrieve('Steven')).not.to.equal('Seagal');
   });
 
+  it('should return undefined if tuple does not exist', function() {
+    hashTable.insert('Tommy', 'Chong');
+    expect(hashTable.retrieve('Cheech')).to.equal(undefined);
+  });
+
   it('should overwrite values that have the same key', function() {
     hashTable.insert('Bob', 'Loblaw');
     hashTable.insert('Bob', 'Barker');
@@ -46,6 +51,7 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
+
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {

@@ -33,7 +33,6 @@ HashTable.prototype.insert = function(k, v) {
       this._storage.set(index, bucket);
     }
   }
-  
 };
 
 HashTable.prototype.retrieve = function(k) {
