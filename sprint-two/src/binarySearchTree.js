@@ -1,21 +1,21 @@
 var BinarySearchTree = function(value) {
   var tree = {};
   
-  tree.root = value;
+  tree.value = value;
   tree.left = null;
   tree.right = null;
    
-  tree.insert = function(value) {debugger;
+  tree.insert = function(value) {
     var traverseTree = function(node, value) {
-      if (value < node.root) { 
+      if (value < node.value) { 
         node.left = BinarySearchTree(value);
-      } else if (value > node.root) { 
+      } else if (value > node.value) { 
         node.right = BinarySearchTree(value);
       }
       return;
     };
     
-    if (this.root > value) {
+    if (this.value > value) {
       // if this.left !== null/
       if (this.left === null) {
         //add node to this.left
@@ -24,28 +24,46 @@ var BinarySearchTree = function(value) {
         //enter recursion
         traverseTree(this.left, value);
       }
-    } else if (this.root < value) {
+    } else if (this.value < value) {
         // if this.right !== Null
       if (this.right === null) {
         this.right = BinarySearchTree(value);
       } else {
         traverseTree(this.right, value);
       }
-        // if (this.right === null) {
-        //   //add node to this.right
-        //   this.right = BinarySearchTree(value);
-        // } else {
-        //   //enter recursion
-        //   traverseTree(this.right);
-        // }
     }
-  
   };
     
   tree.contains = function(value) {
-    
-    
-    //returns boolean
+    var searchNodesForValue = function(node, value) {debugger;
+      //If the value matches the master root
+      if (node.value === value) {
+        //return true;
+        return true;
+      }
+      // if this.value > value
+      if (node.value > value) {
+        //if this.left !== null
+        if (node.left !== null) {
+          //Search Nodes with this.left as the node
+          searchNodesForValue(node.left, value);
+        } else {
+          //return false
+          return false;
+        }
+      // else if this.value < value
+      } else if (node.value < value) {
+        //if this.right !== null
+        if (node.right !== null) {
+          //Search Nodes with this.right as the node
+          searchNodesForValue(node.right, value);
+        } else {
+          //return false
+          return false;
+        }
+      }
+    };
+    return searchNodesForValue(this, value);
   };
 
   tree.depthFirstLog = function(cb) {
